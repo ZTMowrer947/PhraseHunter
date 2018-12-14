@@ -18,7 +18,7 @@ class Game {
             If it doesn't match, call removeLife() to deduct a life.
             If it does, call showMatchedLetter() to show the letter and checkForWin() to check if player has won.
     */
-   handleInteration() {
+   handleInteraction($button) {
 
    }
 
