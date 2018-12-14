@@ -202,3 +202,7 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+
+#overlay.hide {
+  display: none;
+}
