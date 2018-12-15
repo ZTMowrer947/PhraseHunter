@@ -23,15 +23,20 @@ const game = new Game(phrases);
 
 // Hide start screen overlay
 const resetDisplay = () => {
-    $("#overlay")
-        .addClass("hide")
-        .removeClass("win lose");
+    const $overlay = $("#overlay")
+
+    $overlay
+        .animateCSS("fadeOut faster", () => {
+            $overlay
+                .addClass("hide")
+                .removeClass("win lose");
+        });
 };
 
 // Disable button on the onscreen keyboard after the respective letter is selected.
 const markButton = $button => {
-    // Proceed only if letter has not already been chosen
-    if (!$button.hasClass("chosen")) {
+    // Proceed only if letter has not already been chosen and if no animations are currently playing
+    if (!$button.hasClass("chosen") && $(".animated").length === 0) {
         game.handleInteraction($button);
 
         $button

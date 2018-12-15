@@ -42,13 +42,18 @@ class Game {
         this.missed++;
 
         // Remove a heart from the board
-        $("#scoreboard .tries img[src$='liveHeart.png']")
-            .last()
-            .attr("src", "images/lostHeart.png");
+        const $heart = $("#scoreboard .tries img[src$='liveHeart.png']")
+            .last();
 
-        // If miss counter is at 5, end the game
-        if (this.missed === 5)
-            this.gameOver("lose");
+        $heart
+            .animateCSS("fadeOut faster", () => {
+                $heart.attr("src", "images/lostHeart.png");
+
+                // If miss counter is at least 5, end the game
+                // ("this" is referring to the game object)
+                if (this.missed >= 5)
+                    this.gameOver("lose");
+            });
     }
 
     // Check to see if player has selected all letters in the phrase
@@ -65,6 +70,7 @@ class Game {
             "Sorry, you lost.";
 
         $("#overlay")
+            .animateCSS("fadeIn faster")
             .removeClass("hide")
             .addClass(status)
             .children("#game-over-message")
