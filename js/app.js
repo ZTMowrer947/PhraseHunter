@@ -1,14 +1,19 @@
 // Treehouse FSJS Techdegree Unit 4 Project
 // app.js: Main scriping application.
 
-// Phrases to use
-const phrases = [
-    new Phrase("Hello World"),
-    new Phrase("This is a test"),
-    new Phrase("This will be replaced"),
-    new Phrase("By actual phrases"),
-    new Phrase("Later on"),
+// Phrases as strings
+const phraseStrings = [
+    "Hello World",
+    "This is a test",
+    "This will be replaced",
+    "By actual phrases",
+    "L@ter on",
 ];
+
+// Phrases as Phrase objects
+const phrases = phraseStrings
+    .filter(phraseStr => phraseRegex.test(phraseStr)) // Filter out invalid phrases (contain characters that are not letters or spaces)
+    .map(phraseStr => new Phrase(phraseStr));         // Map each string to a Phrase object
 
 // Create new game object
 const game = new Game(phrases);

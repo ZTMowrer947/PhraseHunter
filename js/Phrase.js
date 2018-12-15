@@ -1,8 +1,26 @@
 // Phrase.js: Phrase class for creation and management of phrases.
+
+// Regular expression for phrases (can only contain letters and spaces).
+const phraseRegex = /^[A-z][A-z ]+$/;
+
 class Phrase {
     // Construct new Phrase object with a given phrase
     constructor(phrase) {
-        this.phrase = phrase.toLowerCase();
+        // Ensure that phrase contains only letters and spaces
+        if (phraseRegex.test(phrase))
+            // Convert phrase to lower case and then pass it to the instance "phrase" property
+            this.phrase = phrase.toLowerCase();
+        else
+            /* 
+                Throw error if phrase is invalid.
+                (NOTE)
+                Based on how phrases are constructed in the project's current form, 
+                this error message would never occur normally because invalid phrases are filtered out before construction.
+                
+                If I expand this to use a database or something of the sort, however, this error could be used for
+                informing the user that some phrases are not available.
+            */
+            throw new Error("Phrase can only consist of letters and spaces!");
     }
 
     /* 
@@ -39,6 +57,7 @@ class Phrase {
     }
 
     // Reveal letter on board that matches selection
+    // "static" here means that this method is attached to the class itself, rather than an instance of it.
     static showMatchedLetter(letter) {
         $(`#phrase .${letter}`)     // Get matching letter(s)
             .removeClass("hide")    // Remove "hide" class
