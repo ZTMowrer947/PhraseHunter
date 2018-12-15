@@ -44,3 +44,15 @@ $("#btn__reset").on("click", () => {
 });
 
 $("#qwerty button.key").on("click", event => markButton($(event.target)));
+$(document).on("keypress", event => {
+    // Continue only if we are playing the game
+    if ($("#overlay").hasClass("hide")) {
+        // Get character
+        const char = String
+            .fromCharCode(event.which)  // Convert key character code into string
+            .toLowerCase();             // Make it lowercase
+
+        // Mark button with matching character
+        markButton($(`#qwerty .key:contains('${char}')`));
+    }
+});
