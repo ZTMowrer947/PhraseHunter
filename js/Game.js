@@ -31,11 +31,31 @@ class Game {
 
     // Randomly retrieve a phrase from the array
     getRandomPhrase() {
+        // Get the most times that a phrase has been displayed
+        const mostTimesDisplayed = this.phrases
+            .reduce((currentMostTimesDisplayed, phrase) =>
+                phrase.timesDisplayed > currentMostTimesDisplayed ?
+                    phrase.timesDisplayed :
+                    currentMostTimesDisplayed,
+            0);
+
+        // Filter out phrases that have been displayed the most
+        let lessDisplayedPhrases = this.phrases
+            .filter((phrase) => phrase.timesDisplayed < mostTimesDisplayed);
+
+        /*
+            If all phrases have been displayed the same number of times (or not at all),
+            use them all. Otherwise, use the lesser displayed phrases. 
+        */
+        const phrases = lessDisplayedPhrases.length === 0 ?
+            this.phrases :
+            lessDisplayedPhrases
+
         // Generate random index from 0 (inclusive) to length of "phrases" array (exclusive)
-        const randomIndex = Math.floor(Math.random() * this.phrases.length);
+        const randomIndex = Math.floor(Math.random() * phrases.length);
 
         // Return phrase at that index
-        return this.phrases[randomIndex];
+        return phrases[randomIndex];
     }
 
     /*

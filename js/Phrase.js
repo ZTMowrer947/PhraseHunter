@@ -6,6 +6,9 @@ const phraseRegex = /^[A-z][A-z ]+$/;
 class Phrase {
     // Construct new Phrase object with a given phrase
     constructor(phrase) {
+        // Number of times this phrase has been displayed
+        this.timesDisplayed = 0;
+
         // Ensure that phrase contains only letters and spaces
         if (phraseRegex.test(phrase))
             // Convert phrase to lower case and then pass it to the instance "phrase" property
@@ -28,6 +31,9 @@ class Phrase {
         Replacing each placeholder with the letter when correctly guessed.
     */
     addPhraseToDisplay() {
+        // Increment display counter
+        this.timesDisplayed++;
+
         // Get phrase ul
         const phraseUl = $("#phrase ul");
 
