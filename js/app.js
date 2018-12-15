@@ -27,11 +27,14 @@ const resetDisplay = () => {
 
 // Disable button on the onscreen keyboard after the respective letter is selected.
 const markButton = $button => {
-    $button
-        .prop("disabled", "disabled")
-        .addClass("chosen");
+    // Proceed only if letter has not already been chosen
+    if (!$button.hasClass("chosen")) {
+        game.handleInteraction($button);
 
-    game.handleInteraction($button)
+        $button
+            .prop("disabled", "disabled")
+            .addClass("chosen");
+    }
 };
 
 // Start game when "start game" button is clicked
