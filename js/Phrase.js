@@ -39,7 +39,7 @@ class Phrase {
     }
 
     // Reveal letter on board that matches selection
-    showMatchedLetter(letter) {
+    static showMatchedLetter(letter) {
         $(`#phrase .${letter}`)     // Get matching letter(s)
             .removeClass("hide")    // Remove "hide" class
             .addClass("show")       // Add "show" class
