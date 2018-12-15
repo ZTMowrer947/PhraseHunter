@@ -42,13 +42,13 @@ class Game {
         this.missed++;
 
         // Remove a heart from the board
-        $("#scoreboard .tries img:not([src$='liveHeart.png`)")
+        $("#scoreboard .tries img[src$='liveHeart.png']")
             .last()
             .attr("src", "images/lostHeart.png");
 
         // If miss counter is at 5, end the game
         if (this.missed === 5)
-            this.gameOver("loss");
+            this.gameOver("lose");
     }
 
     // Check to see if player has selected all letters in the phrase
