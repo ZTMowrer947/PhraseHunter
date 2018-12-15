@@ -6,11 +6,12 @@ const charRegex = /^[A-Za-z]$/;
 
 // Phrases as strings
 const phraseStrings = [
-    "Hello World",
-    "This is a test",
-    "This will be replaced",
-    "By actual phrases",
-    "Later on",
+    "Never doubt yourself",
+    "Treehouse is excellent",
+    "Giving Up should never be in your vocabulary",
+    "Seize the day",
+    "Work down to the bone",
+    "Computers are awesome",
 ];
 
 // Phrases as Phrase objects
