@@ -15,7 +15,9 @@ const game = new Game(phrases);
 
 // Hide start screen overlay
 const resetDisplay = () => {
-    $("#overlay").addClass("hide");
+    $("#overlay")
+        .addClass("hide")
+        .removeClass("win lose");
 };
 
 // Disable button on the onscreen keyboard after the respective letter is selected.

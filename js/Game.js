@@ -69,13 +69,24 @@ class Game {
             .addClass(status)
             .children("#game-over-message")
             .first()
-            .text(gameOverMessage);
+            .text(gameOverMessage)
+            .siblings("#btn__reset")
+            .text("Play again");
     }
 
     // Start the game
     startGame() {
         // Reset miss counter
         this.missed = 0;
+
+        // Reset any chosen keyboard keys
+        $("#qwerty .key")
+            .prop("disabled", false)
+            .removeClass("chosen");
+
+        // Remove previous phrase, if any have been loaded
+        $("#phrase li")
+            .remove();
 
         // Get phrase
         const phrase = this.getRandomPhrase();
