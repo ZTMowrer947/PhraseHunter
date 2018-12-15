@@ -9,6 +9,26 @@ class Game {
         this.phrases = phrases;
     }
 
+    // Self-explanatory, gets the game difficulty
+    get difficulty() {
+        return $("#difficulty").val();
+    }
+
+    // Determine the number of hearts that the player has
+    get totalHearts() {
+        // Considering the difficulty value, return the number of hearts corresponding to it
+        switch (this.difficulty) {
+            case "easy":
+                return 5;
+            
+            case "medium":
+                return 3;
+
+            case "hard":
+                return 1;
+        }
+    }
+
     // Randomly retrieve a phrase from the array
     getRandomPhrase() {
         // Generate random index from 0 (inclusive) to length of "phrases" array (exclusive)
@@ -49,9 +69,9 @@ class Game {
             .animateCSS("fadeOut faster", () => {
                 $heart.attr("src", "images/lostHeart.png");
 
-                // If miss counter is at least 5, end the game
+                // If miss counter is greater than or equal to the total number of hearts, end the game
                 // ("this" is referring to the game object)
-                if (this.missed >= 5)
+                if (this.missed >= this.totalHearts)
                     this.gameOver("lose");
             });
     }
@@ -95,9 +115,23 @@ class Game {
             // Reset miss counter
             this.missed = 0;
 
-            // Reset hearts
-            $("#scoreboard img")
-                .attr("src", "images/liveHeart.png");
+            // Remove all hearts
+            $("#scoreboard li")
+                .remove()
+
+            // Add in the amount corresponding to the total number of hearts to have
+            for (let i = 0; i < this.totalHearts; i++) {
+                const $heartImage = $("<img />", {
+                    src: "images/liveHeart.png",
+                    alt: "Heart Icon",
+                    height: 35,
+                    width: 30,
+                });
+
+                $("<li>", { class: "tries" })
+                    .append($heartImage)
+                    .appendTo("#scoreboard ol");
+            }
 
             // Reset any chosen keyboard keys
             $("#qwerty .key")
