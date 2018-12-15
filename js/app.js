@@ -3,11 +3,11 @@
 
 // Phrases to use
 const phrases = [
-    "Hello World",
-    "This is a test",
-    "This will be replaced",
-    "By actual phrases",
-    "Later on",
+    new Phrase("Hello World"),
+    new Phrase("This is a test"),
+    new Phrase("This will be replaced"),
+    new Phrase("By actual phrases"),
+    new Phrase("Later on"),
 ];
 
 // Create new game object
