@@ -7,7 +7,7 @@ const phraseStrings = [
     "This is a test",
     "This will be replaced",
     "By actual phrases",
-    "L@ter on",
+    "Later on",
 ];
 
 // Phrases as Phrase objects

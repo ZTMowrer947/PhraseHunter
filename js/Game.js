@@ -76,22 +76,33 @@ class Game {
 
     // Start the game
     startGame() {
-        // Reset miss counter
-        this.missed = 0;
+        // Auto end game if there are no phrases to use
+        if (this.phrases.length === 0) {
+            $("#overlay")
+                .removeClass("hide") // Show overlay
+                .addClass("nophrases lose")
+                .children("#game-over-message")
+                .text("Sorry, there are no phrases to hunt for.") // Set error text
+                .siblings("#btn__reset")
+                .remove();           // Remove reset button: We can't continue without any phrases
+        } else {
+            // Reset miss counter
+            this.missed = 0;
 
-        // Reset any chosen keyboard keys
-        $("#qwerty .key")
-            .prop("disabled", false)
-            .removeClass("chosen");
+            // Reset any chosen keyboard keys
+            $("#qwerty .key")
+                .prop("disabled", false)
+                .removeClass("chosen");
 
-        // Remove previous phrase, if any have been loaded
-        $("#phrase li")
-            .remove();
+            // Remove previous phrase, if any have been loaded
+            $("#phrase li")
+                .remove();
 
-        // Get phrase
-        const phrase = this.getRandomPhrase();
+            // Get phrase
+            const phrase = this.getRandomPhrase();
 
-        // Add it to display
-        phrase.addPhraseToDisplay();
+            // Add it to display
+            phrase.addPhraseToDisplay();
+        }
     }
 }
