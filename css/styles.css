@@ -206,3 +206,11 @@ button {
 #overlay.hide {
   display: none;
 }
+
+#game-settings {
+  margin-top: 1rem;
+}
+
+#game-settings label {
+  margin-right: 0.5rem;
+}
