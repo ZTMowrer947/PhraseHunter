@@ -1,6 +1,9 @@
 // Treehouse FSJS Techdegree Unit 4 Project
 // app.js: Main scriping application.
 
+// Regex for keyboard characters
+const charRegex = /^[A-Za-z]$/;
+
 // Phrases as strings
 const phraseStrings = [
     "Hello World",
@@ -55,7 +58,9 @@ $(document).on("keypress", event => {
             .fromCharCode(event.which)  // Convert key character code into string
             .toLowerCase();             // Make it lowercase
 
-        // Mark button with matching character
-        markButton($(`#qwerty .key:contains('${char}')`));
+        // Continue only if the character is alphabetical
+        if (charRegex.test(char))
+            // Mark button with matching character
+            markButton($(`#qwerty .key:contains('${char}')`));
     }
 });
