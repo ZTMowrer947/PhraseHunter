@@ -115,6 +115,10 @@ class Game {
             // Reset miss counter
             this.missed = 0;
 
+            // Clear overlay game over text
+            $("#overlay #game-over-message")
+                .text("");
+
             // Remove all hearts
             $("#scoreboard li")
                 .remove()
