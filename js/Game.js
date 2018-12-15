@@ -89,6 +89,10 @@ class Game {
             // Reset miss counter
             this.missed = 0;
 
+            // Reset hearts
+            $("#scoreboard img")
+                .attr("src", "images/liveHeart.png");
+
             // Reset any chosen keyboard keys
             $("#qwerty .key")
                 .prop("disabled", false)
