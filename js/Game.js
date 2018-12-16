@@ -75,6 +75,9 @@ class Game {
 
         // If there are none,
         if ($matchedLettersInPhrase.length === 0) {
+            // Add "wrong" class to button to indicate that it was incorrect
+            $button.addClass("wrong");
+
             // Remove a life
             this.removeLife()
         } else {
@@ -178,7 +181,7 @@ class Game {
             // Reset and reenable any chosen keyboard keys
             $("#qwerty .key")
                 .prop("disabled", false)
-                .removeClass("chosen");
+                .removeClass("chosen wrong");
 
             // Remove previous phrase, if any have been loaded
             $("#phrase li")
