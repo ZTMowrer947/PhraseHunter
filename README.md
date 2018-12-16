@@ -62,3 +62,6 @@ The player continues to guess all the letters in the phrase (and win) or lose al
     - Easy (default): 5 hearts
     - Medium: 3 hearts
     - Hard: Only 1 heart
+
+#### Game over
+- When the player loses, they are given 5 seconds to see what the phrase actually was.
