@@ -104,8 +104,18 @@ class Game {
 
                 // If miss counter is greater than or equal to the total number of hearts, end the game
                 // ("this" is referring to the game object)
-                if (this.missed >= this.totalHearts)
-                    this.gameOver("lose");
+                if (this.missed >= this.totalHearts) {
+                    // Reveal what the phrase was
+                    $("#phrase li.letter.hide")
+                        .removeClass("hide")
+                        .addClass("show");
+
+                    // Wait 5 seconds
+                    setTimeout(() => {
+                        // End the game
+                        this.gameOver("lose");
+                    }, 5000)
+                }
             });
     }
 
