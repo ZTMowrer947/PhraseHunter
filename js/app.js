@@ -24,13 +24,15 @@ const game = new Game(phrases);
 
 // Hide start screen overlay
 const resetDisplay = () => {
+    // Get overlay
     const $overlay = $("#overlay")
 
     $overlay
+        // Fade out overlay, then do the following
         .animateCSS("fadeOut faster", () => {
             $overlay
-                .addClass("hide")
-                .removeClass("win lose");
+                .addClass("hide")           // Hide overlay after animation is finished
+                .removeClass("win lose");   // Remove any win or lose result classes
         });
 };
 
@@ -38,11 +40,12 @@ const resetDisplay = () => {
 const markButton = $button => {
     // Proceed only if letter has not already been chosen and if no animations are currently playing
     if (!$button.hasClass("chosen") && $(".animated").length === 0) {
+        // Handle button interaction
         game.handleInteraction($button);
 
         $button
-            .prop("disabled", "disabled")
-            .addClass("chosen");
+            .prop("disabled", "disabled")   // Disable button
+            .addClass("chosen");            // Add "chosen" class to indicate that it has been chosen
     }
 };
 
