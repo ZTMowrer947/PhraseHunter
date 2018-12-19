@@ -38,8 +38,11 @@ const resetDisplay = () => {
 
 // Disable button on the onscreen keyboard after the respective letter is selected.
 const markButton = $button => {
-    // Proceed only if letter has not already been chosen and if no animations are currently playing
-    if (!$button.hasClass("chosen") && $(".animated").length === 0) {
+    /*
+        Proceed only if the letter has not already been chosen, no animations are currently playing,
+        and the game is still being played.
+    */
+    if (!$button.hasClass("chosen") && $(".animated").length === 0 && game.isPlaying) {
         // Handle button interaction
         game.handleInteraction($button);
 

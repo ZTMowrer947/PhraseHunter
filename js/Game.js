@@ -9,6 +9,12 @@ class Game {
         this.phrases = phrases;
     }
 
+    // Checks if the player is still playing (hasn't yet won or lost)
+    get isPlaying() {
+        return $("#phrase .letter.hide").length !== 0 && // Check if player hasn't won
+            this.missed < this.totalHearts;              // and hasn't lost
+    }
+
     // Self-explanatory, gets the game difficulty
     get difficulty() {
         return $("#difficulty").val();
